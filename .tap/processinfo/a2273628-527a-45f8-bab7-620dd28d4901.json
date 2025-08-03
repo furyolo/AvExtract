@@ -1,0 +1,251 @@
+{
+  "date": "2025-08-03T11:36:22.957Z",
+  "argv": [
+    "C:\\Users\\Andy\\AppData\\Roaming\\fnm\\node-versions\\v22.14.0\\installation\\node.exe",
+    "D:\\Coding\\AvExtract\\test\\routes\\root.test.ts"
+  ],
+  "execArgv": [
+    "--import=file:///D:/Coding/AvExtract/node_modules/.pnpm/@tapjs+typescript@3.1.0_@ta_a978de0f11d21f3e042c43b941b7d28e/node_modules/@tapjs/typescript/dist/esm/import.mjs",
+    "--import=file:///D:/Coding/AvExtract/node_modules/.pnpm/@tapjs+mock@4.0.1_@tapjs+co_bba3bcdf710fa56265c43c44f67ab5ac/node_modules/@tapjs/mock/dist/esm/import.mjs",
+    "--enable-source-maps",
+    "--import=file:///D:/Coding/AvExtract/node_modules/.pnpm/@tapjs+processinfo@3.1.8/node_modules/@tapjs/processinfo/dist/esm/import.mjs"
+  ],
+  "NODE_OPTIONS": "\"--import=file:///D:/Coding/AvExtract/node_modules/.pnpm/@tapjs+processinfo@3.1.8/node_modules/@tapjs/processinfo/dist/esm/import.mjs\"",
+  "cwd": "D:\\Coding\\AvExtract",
+  "pid": 14216,
+  "ppid": 6668,
+  "parent": null,
+  "uuid": "a2273628-527a-45f8-bab7-620dd28d4901",
+  "files": [
+    "D:\\Coding\\AvExtract\\test\\routes\\root.test.ts",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+typescript@3.1.0_@ta_a978de0f11d21f3e042c43b941b7d28e\\node_modules\\@tapjs\\typescript\\dist\\esm\\import.mjs",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@isaacs+ts-node-temp-fork-f_2cd8a6522b1cf4145d48d783f0d8232f\\node_modules\\@isaacs\\ts-node-temp-fork-for-pr-2009\\import.mjs",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@isaacs+ts-node-temp-fork-f_2cd8a6522b1cf4145d48d783f0d8232f\\node_modules\\@isaacs\\ts-node-temp-fork-for-pr-2009\\import-loader.mjs",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+mock@4.0.1_@tapjs+co_bba3bcdf710fa56265c43c44f67ab5ac\\node_modules\\@tapjs\\mock\\dist\\esm\\import.mjs",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+mock@4.0.1_@tapjs+co_bba3bcdf710fa56265c43c44f67ab5ac\\node_modules\\@tapjs\\mock\\dist\\esm\\mock-service.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+stack@4.0.0\\node_modules\\@tapjs\\stack\\dist\\esm\\index.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\index.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\is-relative-require.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+mock@4.0.1_@tapjs+co_bba3bcdf710fa56265c43c44f67ab5ac\\node_modules\\@tapjs\\mock\\dist\\esm\\export-line.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+mock@4.0.1_@tapjs+co_bba3bcdf710fa56265c43c44f67ab5ac\\node_modules\\@tapjs\\mock\\dist\\esm\\munge-mocks.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+mock@4.0.1_@tapjs+co_bba3bcdf710fa56265c43c44f67ab5ac\\node_modules\\@tapjs\\mock\\dist\\esm\\resolve-mock-entry-point.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+mock@4.0.1_@tapjs+co_bba3bcdf710fa56265c43c44f67ab5ac\\node_modules\\@tapjs\\mock\\dist\\esm\\service-key.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+stack@4.0.0\\node_modules\\@tapjs\\stack\\dist\\esm\\call-site-like.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+stack@4.0.0\\node_modules\\@tapjs\\stack\\dist\\esm\\require-resolve.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\get-all-conditional-values.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\get-all-conditions.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\get-unique-condition-sets.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\resolve-all-exports.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\resolve-import.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\is-windows.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\resolve-all-local-imports.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\resolve-conditional-value.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+stack@4.0.0\\node_modules\\@tapjs\\stack\\dist\\esm\\parse.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\get-conditional-values-list.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\errors.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\get-named-exports-list.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\read-pkg.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\resolve-export.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\star-glob.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\to-path.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\file-exists.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\find-dep-package.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\to-file-url.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\resolve-dependency-export.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\resolve-package-import.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\read-json.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\find-star-match.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\glob@11.0.3\\node_modules\\glob\\dist\\esm\\index.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\walk-up-path@4.0.0\\node_modules\\walk-up-path\\dist\\esm\\index.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\minimatch@10.0.3\\node_modules\\minimatch\\dist\\esm\\index.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\glob@11.0.3\\node_modules\\glob\\dist\\esm\\glob.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\glob@11.0.3\\node_modules\\glob\\dist\\esm\\has-magic.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\glob@11.0.3\\node_modules\\glob\\dist\\esm\\ignore.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\glob@11.0.3\\node_modules\\glob\\dist\\esm\\pattern.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@isaacs+brace-expansion@5.0.0\\node_modules\\@isaacs\\brace-expansion\\dist\\esm\\index.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\minimatch@10.0.3\\node_modules\\minimatch\\dist\\esm\\assert-valid-pattern.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\minimatch@10.0.3\\node_modules\\minimatch\\dist\\esm\\ast.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\minimatch@10.0.3\\node_modules\\minimatch\\dist\\esm\\escape.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\minimatch@10.0.3\\node_modules\\minimatch\\dist\\esm\\unescape.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\path-scurry@2.0.0\\node_modules\\path-scurry\\dist\\esm\\index.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\glob@11.0.3\\node_modules\\glob\\dist\\esm\\walker.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@isaacs+balanced-match@4.0.1\\node_modules\\@isaacs\\balanced-match\\dist\\esm\\index.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\minimatch@10.0.3\\node_modules\\minimatch\\dist\\esm\\brace-expressions.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\lru-cache@11.1.0\\node_modules\\lru-cache\\dist\\esm\\index.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\minipass@7.1.2\\node_modules\\minipass\\dist\\esm\\index.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\glob@11.0.3\\node_modules\\glob\\dist\\esm\\processor.js",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+mock@4.0.1_@tapjs+co_bba3bcdf710fa56265c43c44f67ab5ac\\node_modules\\@tapjs\\mock\\dist\\esm\\loader.mjs",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+mock@4.0.1_@tapjs+co_bba3bcdf710fa56265c43c44f67ab5ac\\node_modules\\@tapjs\\mock\\dist\\esm\\hooks.mjs",
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+mock@4.0.1_@tapjs+co_bba3bcdf710fa56265c43c44f67ab5ac\\node_modules\\@tapjs\\mock\\dist\\esm\\mock-service-client.js",
+    "D:\\Coding\\AvExtract\\test\\helper.ts"
+  ],
+  "sources": {
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+typescript@3.1.0_@ta_a978de0f11d21f3e042c43b941b7d28e\\node_modules\\@tapjs\\typescript\\dist\\esm\\import.mjs": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+typescript@3.1.0_@ta_a978de0f11d21f3e042c43b941b7d28e\\node_modules\\@tapjs\\typescript\\src\\import.mts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+mock@4.0.1_@tapjs+co_bba3bcdf710fa56265c43c44f67ab5ac\\node_modules\\@tapjs\\mock\\dist\\esm\\import.mjs": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+mock@4.0.1_@tapjs+co_bba3bcdf710fa56265c43c44f67ab5ac\\node_modules\\@tapjs\\mock\\src\\import.mts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+mock@4.0.1_@tapjs+co_bba3bcdf710fa56265c43c44f67ab5ac\\node_modules\\@tapjs\\mock\\dist\\esm\\mock-service.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+mock@4.0.1_@tapjs+co_bba3bcdf710fa56265c43c44f67ab5ac\\node_modules\\@tapjs\\mock\\src\\mock-service.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+stack@4.0.0\\node_modules\\@tapjs\\stack\\dist\\esm\\index.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+stack@4.0.0\\node_modules\\@tapjs\\stack\\src\\index.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\index.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\index.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\is-relative-require.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\is-relative-require.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+mock@4.0.1_@tapjs+co_bba3bcdf710fa56265c43c44f67ab5ac\\node_modules\\@tapjs\\mock\\dist\\esm\\export-line.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+mock@4.0.1_@tapjs+co_bba3bcdf710fa56265c43c44f67ab5ac\\node_modules\\@tapjs\\mock\\src\\export-line.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+mock@4.0.1_@tapjs+co_bba3bcdf710fa56265c43c44f67ab5ac\\node_modules\\@tapjs\\mock\\dist\\esm\\munge-mocks.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+mock@4.0.1_@tapjs+co_bba3bcdf710fa56265c43c44f67ab5ac\\node_modules\\@tapjs\\mock\\src\\munge-mocks.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+mock@4.0.1_@tapjs+co_bba3bcdf710fa56265c43c44f67ab5ac\\node_modules\\@tapjs\\mock\\dist\\esm\\resolve-mock-entry-point.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+mock@4.0.1_@tapjs+co_bba3bcdf710fa56265c43c44f67ab5ac\\node_modules\\@tapjs\\mock\\src\\resolve-mock-entry-point.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+mock@4.0.1_@tapjs+co_bba3bcdf710fa56265c43c44f67ab5ac\\node_modules\\@tapjs\\mock\\dist\\esm\\service-key.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+mock@4.0.1_@tapjs+co_bba3bcdf710fa56265c43c44f67ab5ac\\node_modules\\@tapjs\\mock\\src\\service-key.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+stack@4.0.0\\node_modules\\@tapjs\\stack\\dist\\esm\\call-site-like.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+stack@4.0.0\\node_modules\\@tapjs\\stack\\src\\call-site-like.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+stack@4.0.0\\node_modules\\@tapjs\\stack\\dist\\esm\\require-resolve.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+stack@4.0.0\\node_modules\\@tapjs\\stack\\src\\require-resolve.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\get-all-conditional-values.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\get-all-conditional-values.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\get-all-conditions.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\get-all-conditions.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\get-unique-condition-sets.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\get-unique-condition-sets.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\resolve-all-exports.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\resolve-all-exports.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\resolve-import.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\resolve-import.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\is-windows.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\is-windows.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\resolve-all-local-imports.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\resolve-all-local-imports.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\resolve-conditional-value.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\resolve-conditional-value.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+stack@4.0.0\\node_modules\\@tapjs\\stack\\dist\\esm\\parse.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@tapjs+stack@4.0.0\\node_modules\\@tapjs\\stack\\src\\parse.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\get-conditional-values-list.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\get-conditional-values-list.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\errors.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\errors.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\get-named-exports-list.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\get-named-exports-list.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\read-pkg.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\read-pkg.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\resolve-export.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\resolve-export.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\star-glob.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\star-glob.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\to-path.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\to-path.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\file-exists.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\file-exists.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\find-dep-package.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\find-dep-package.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\to-file-url.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\to-file-url.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\resolve-dependency-export.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\resolve-dependency-export.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\resolve-package-import.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\resolve-package-import.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\read-json.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\read-json.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\dist\\esm\\find-star-match.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\resolve-import@2.0.0\\node_modules\\resolve-import\\src\\find-star-match.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\glob@11.0.3\\node_modules\\glob\\dist\\esm\\index.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\glob@11.0.3\\node_modules\\glob\\src\\index.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\walk-up-path@4.0.0\\node_modules\\walk-up-path\\dist\\esm\\index.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\walk-up-path@4.0.0\\node_modules\\walk-up-path\\src\\index.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\minimatch@10.0.3\\node_modules\\minimatch\\dist\\esm\\index.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\minimatch@10.0.3\\node_modules\\minimatch\\src\\index.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\glob@11.0.3\\node_modules\\glob\\dist\\esm\\glob.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\glob@11.0.3\\node_modules\\glob\\src\\glob.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\glob@11.0.3\\node_modules\\glob\\dist\\esm\\has-magic.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\glob@11.0.3\\node_modules\\glob\\src\\has-magic.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\glob@11.0.3\\node_modules\\glob\\dist\\esm\\ignore.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\glob@11.0.3\\node_modules\\glob\\src\\ignore.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\glob@11.0.3\\node_modules\\glob\\dist\\esm\\pattern.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\glob@11.0.3\\node_modules\\glob\\src\\pattern.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@isaacs+brace-expansion@5.0.0\\node_modules\\@isaacs\\brace-expansion\\dist\\esm\\index.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@isaacs+brace-expansion@5.0.0\\node_modules\\@isaacs\\brace-expansion\\src\\index.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\minimatch@10.0.3\\node_modules\\minimatch\\dist\\esm\\assert-valid-pattern.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\minimatch@10.0.3\\node_modules\\minimatch\\src\\assert-valid-pattern.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\minimatch@10.0.3\\node_modules\\minimatch\\dist\\esm\\ast.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\minimatch@10.0.3\\node_modules\\minimatch\\src\\ast.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\minimatch@10.0.3\\node_modules\\minimatch\\dist\\esm\\escape.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\minimatch@10.0.3\\node_modules\\minimatch\\src\\escape.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\minimatch@10.0.3\\node_modules\\minimatch\\dist\\esm\\unescape.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\minimatch@10.0.3\\node_modules\\minimatch\\src\\unescape.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\path-scurry@2.0.0\\node_modules\\path-scurry\\dist\\esm\\index.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\path-scurry@2.0.0\\node_modules\\path-scurry\\src\\index.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\glob@11.0.3\\node_modules\\glob\\dist\\esm\\walker.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\glob@11.0.3\\node_modules\\glob\\src\\walker.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@isaacs+balanced-match@4.0.1\\node_modules\\@isaacs\\balanced-match\\dist\\esm\\index.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\@isaacs+balanced-match@4.0.1\\node_modules\\@isaacs\\balanced-match\\src\\index.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\minimatch@10.0.3\\node_modules\\minimatch\\dist\\esm\\brace-expressions.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\minimatch@10.0.3\\node_modules\\minimatch\\src\\brace-expressions.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\lru-cache@11.1.0\\node_modules\\lru-cache\\dist\\esm\\index.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\lru-cache@11.1.0\\node_modules\\lru-cache\\src\\index.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\minipass@7.1.2\\node_modules\\minipass\\dist\\esm\\index.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\minipass@7.1.2\\node_modules\\minipass\\src\\index.ts"
+    ],
+    "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\glob@11.0.3\\node_modules\\glob\\dist\\esm\\processor.js": [
+      "D:\\Coding\\AvExtract\\node_modules\\.pnpm\\glob@11.0.3\\node_modules\\glob\\src\\processor.ts"
+    ]
+  },
+  "root": "a2273628-527a-45f8-bab7-620dd28d4901",
+  "externalID": "test/routes/root.test.ts",
+  "code": 1,
+  "signal": null,
+  "runtime": 2319.7231
+}

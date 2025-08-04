@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         色花堂番号发送器
 // @namespace    https://github.com/qxinGitHub/searchAV
-// @version      1.1.0
-// @description  检测网页上的番号并提供发送到色花堂搜索的功能，支持自动传递和一键搜索
+// @version      1.2.0
+// @description  检测网页上的番号并提供发送到色花堂搜索的功能，支持自动传递和一键搜索，新增30秒全局冷却功能
 // @author       色花堂
 // @icon         data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABLdJREFUWEftmG2IVGUUx3//O6MZapIftJTeKAqDiqiPGllZSdqHXsw3KmNnpm1LzYqgAleoMAJLw2xmdtsKqS3BkIy0QDSS6FNIkAgRilhUkPjGprtzTzx3d2fv3L0z986upB+6X+855/6e5znnf55zZWYTOY8fOUBJJ85HxoDtf8BRHM2odtAM0cF0fC6oMnicpoUjEjYKrqpr04DWxTjOsNQ8Chg3AWNiQHoR++RTZCybtYx/RgqbGtA6mej3sVziRaCZqj9h0O79xga109csaCpAK3KDiW7g+mY/ELL/WcZCFfipmRiJgFZinsFHwMXNBK5je1SwSHl2po3VENBKzDWjG3FRQkCXY8chsBvX0NY4LrFQeb5KA1kX0Dq5zip8DVweE8gHDkis5Qxb1cbJQRvbyASyLDHxPHBNLIRxQD53qpUjSZCxgE4+/BKfSDwSE+CU4FlydDSSEmsn61/KCok1wPhoHIP3vRwtSXIUD1jkbhNbYwIPy6FgMWWeE8wyY3emwFthGHuP+SY2x6TJUXnMVwt7G+3iMED3QSuzBXgw4tgjn6V6MgAfEtIOJpvPLgg0cZ887lALf9fYlGkzC8BrNNOgnMmTbw6wzFVuJ6K5V+9ILA1g/ZQ5pF5mqY3D9SCH72CRxSY+BLJD28RxwX0q8N2wXEoB6HysyEyDLyNHfXpAdj5PDVgp8aYIKjD8/KBe7gpXa7Vq0wLW2g2t3ViTKdCeGtAv8xnGwzU5BB9k8iwLLgdF5iGuGHzve1won2cQl2EcNo93PJ+e0O4fosB2V61+iS+AeTWxjY2ZAk+nByyxA7gnArg+k2elFbnaFFTd1CT9Cr2vFk6lxNuCFRHfnV6ee88OYH8BuTycdhYBt3t55qcGrJToEjxe4yC2eDkWBMnewWQqNX15UqBzMAPYL2MpcKzqn+HooOz4DU4nPWCRdonVEYdYfRsETtLBwG4jl9gY9gDXhmML2pTn3dSAFt9FegQLlGf7iGWmzKNmdNbIF5yS8YAKQc+PfYbr4CamWCYQandk4We3xjA3ejtOJdT9EuMgbonE3K8Kt6uVP1MDOsNKkdckXoo4+WZs8PKsCjf4GkDjR8FsFYZycODisU5iOeBFJOb1TIGXGxVc/GWhzAwzvgGmR5x7DVZ7OdbWQJaZis8EQgUR5F1/i3tV4oWY2eWgKsxWKwebBgx2scQawSvRVQPuLrhNWQp6gr/qHs0mplsmyLk5MTH6XLdSnvVJclX/wtrFOOvlU+D+OkF6gV2CbjJ8Tx99ZMnSxywTi4GZdSa+wXB7VGFBo/zrP4UGfxbMFYzHDsTNSSsd4ftEyOShqZNp5rMN49YRQiS5NYRMBAy22c3EleCWk4vJpyQA994NVa4YnEjXVPKAc13IVICDBFbmRrMgsW9LCeoK6lsZrfzOL/401rnO0QxkU4BV0E1M8bM8Jp9FiCuBSQMfdUDHMA66mcar0BWe3IJBqknIEQGmOdP6nSHQxljhjjvu/xwwJOB1IcPD1DkBTAG5VyeZo1X0nDPARpAmPs7kWJIo1KPJtbS+A/36DYmVQedxF44KD+kpfj0vAKvK4P7pjGW8cvxRe+MZaHVpV3wu7P4FjSUI5qMsu14AAAAASUVORK5CYII=
 // @license      MIT
@@ -46,6 +46,127 @@
 
     // 排除特定className（移除负向后瞻以提高兼容性）
     var RE_Exclude_className = /name|auth|user|code|^pstatus$|editor|time|sav-id|sidebar|menu|TbwUpd|sehuatang-sender/gi;
+
+    // 全局冷却时间配置
+    const COOLDOWN_DURATION = 30 * 1000; // 30秒冷却时间
+    const COOLDOWN_KEY = 'sehuatang_sender_cooldown';
+    const COOLDOWN_START_KEY = 'sehuatang_sender_cooldown_start';
+
+    // 全局冷却状态管理
+    let globalCooldownTimer = null;
+
+    // 检查是否在冷却期间
+    function isInCooldown() {
+        try {
+            const cooldownStart = localStorage.getItem(COOLDOWN_START_KEY);
+            if (!cooldownStart) return false;
+
+            const startTime = parseInt(cooldownStart);
+            const currentTime = Date.now();
+            const elapsed = currentTime - startTime;
+
+            return elapsed < COOLDOWN_DURATION;
+        } catch (error) {
+            console.error('检查冷却状态失败:', error);
+            return false;
+        }
+    }
+
+    // 获取剩余冷却时间（毫秒）
+    function getRemainingCooldown() {
+        try {
+            const cooldownStart = localStorage.getItem(COOLDOWN_START_KEY);
+            if (!cooldownStart) return 0;
+
+            const startTime = parseInt(cooldownStart);
+            const currentTime = Date.now();
+            const elapsed = currentTime - startTime;
+            const remaining = COOLDOWN_DURATION - elapsed;
+
+            return Math.max(0, remaining);
+        } catch (error) {
+            console.error('获取剩余冷却时间失败:', error);
+            return 0;
+        }
+    }
+
+    // 开始冷却
+    function startCooldown() {
+        try {
+            const currentTime = Date.now();
+            localStorage.setItem(COOLDOWN_START_KEY, currentTime.toString());
+            localStorage.setItem(COOLDOWN_KEY, 'true');
+
+            // 更新所有按钮状态
+            updateAllButtonsState();
+
+            // 设置定时器在冷却结束时清理
+            if (globalCooldownTimer) {
+                clearTimeout(globalCooldownTimer);
+            }
+
+            globalCooldownTimer = setTimeout(() => {
+                endCooldown();
+            }, COOLDOWN_DURATION);
+
+            console.log('色花堂发送器: 开始30秒冷却期');
+        } catch (error) {
+            console.error('开始冷却失败:', error);
+        }
+    }
+
+    // 结束冷却
+    function endCooldown() {
+        try {
+            console.log('色花堂发送器: 开始结束冷却流程');
+
+            // 删除localStorage数据，这会触发其他页面的storage事件
+            localStorage.removeItem(COOLDOWN_START_KEY);
+            localStorage.removeItem(COOLDOWN_KEY);
+
+            console.log('色花堂发送器: 已删除localStorage冷却数据');
+
+            // 更新所有按钮状态
+            updateAllButtonsState();
+
+            // 清理定时器
+            if (globalCooldownTimer) {
+                clearTimeout(globalCooldownTimer);
+                globalCooldownTimer = null;
+            }
+
+            console.log('色花堂发送器: 冷却期结束完成');
+        } catch (error) {
+            console.error('结束冷却失败:', error);
+        }
+    }
+
+    // 更新所有按钮状态
+    function updateAllButtonsState() {
+        const buttons = document.querySelectorAll('.sehuatang-sender-btn');
+        const inCooldown = isInCooldown();
+
+        buttons.forEach(button => {
+            if (inCooldown) {
+                button.classList.add('cooldown');
+                button.style.pointerEvents = 'none';
+                button.style.opacity = '0.5';
+                button.innerHTML = '🕐冷却中';
+                button.title = '冷却期间，请稍候...';
+            } else {
+                button.classList.remove('cooldown');
+                button.style.pointerEvents = 'auto';
+                button.style.opacity = '1';
+                if (!button.classList.contains('sending') && !button.classList.contains('success')) {
+                    button.innerHTML = '🌸色花堂';
+                    const fanghao = button.dataset.fanghao;
+                    button.title = `发送番号 ${fanghao} 到色花堂搜索\n点击后将自动打开色花堂搜索页面`;
+                }
+            }
+        });
+    }
+
+
 
     // 格式化番号, 添加中间的横杠
     function formatAVID(otext) {
@@ -237,6 +358,17 @@
             from { width: 100%; }
             to { width: 0%; }
         }
+        .sehuatang-sender-btn.cooldown {
+            background: linear-gradient(135deg, #9e9e9e, #757575) !important;
+            cursor: not-allowed !important;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+        .sehuatang-sender-btn.cooldown:hover {
+            background: linear-gradient(135deg, #9e9e9e, #757575) !important;
+            transform: none !important;
+            box-shadow: none !important;
+        }
     `);
 
     // 创建色花堂发送按钮
@@ -251,8 +383,15 @@
             e.preventDefault();
             e.stopPropagation();
 
+            // 检查是否在冷却期间
+            if (isInCooldown()) {
+                const remaining = Math.ceil(getRemainingCooldown() / 1000);
+                showToast(`冷却中，请等待 ${remaining} 秒后再试`, 'warning');
+                return;
+            }
+
             // 防止重复点击
-            if (button.classList.contains('sending')) {
+            if (button.classList.contains('sending') || button.classList.contains('cooldown')) {
                 return;
             }
 
@@ -276,6 +415,15 @@
             e.preventDefault();
             showContextMenu(e, avID);
         });
+
+        // 检查并设置初始冷却状态
+        if (isInCooldown()) {
+            button.classList.add('cooldown');
+            button.style.pointerEvents = 'none';
+            button.style.opacity = '0.5';
+            button.innerHTML = '🕐冷却中';
+            button.title = '冷却期间，请稍候...';
+        }
 
         return button;
     }
@@ -331,6 +479,9 @@
 
             // 显示成功提示
             showToast(`番号 ${cleanedID} 已发送到色花堂`, 'success');
+
+            // 启动冷却期
+            startCooldown();
 
             // 详细日志记录
             console.log('色花堂发送器: 发送成功', {
@@ -715,11 +866,80 @@
         });
     }
 
+
+
+    // 跨页面状态同步
+    function setupCrossPageSync() {
+        // 监听 localStorage 变化，实现跨页面同步
+        window.addEventListener('storage', (e) => {
+            if (e.key === COOLDOWN_START_KEY || e.key === COOLDOWN_KEY) {
+                console.log('色花堂发送器: 检测到其他页面的冷却状态变化', {
+                    key: e.key,
+                    oldValue: e.oldValue,
+                    newValue: e.newValue,
+                    url: e.url
+                });
+
+                // 清理当前定时器
+                if (globalCooldownTimer) {
+                    clearTimeout(globalCooldownTimer);
+                    globalCooldownTimer = null;
+                    console.log('色花堂发送器: 已清理globalCooldownTimer');
+                }
+
+                // 如果冷却数据被删除（newValue为null），立即结束冷却
+                if (e.newValue === null) {
+                    console.log('色花堂发送器: 其他页面结束了冷却，同步结束本页面冷却');
+                    updateAllButtonsState();
+                    console.log('色花堂发送器: 跨页面同步结束冷却完成');
+                } else {
+                    console.log('色花堂发送器: 冷却状态发生变化，重新初始化');
+                    // 重新初始化状态
+                    initializeCooldownState();
+                }
+            }
+        });
+    }
+
+    // 初始化冷却状态
+    function initializeCooldownState() {
+        console.log('色花堂发送器: 初始化冷却状态');
+
+        // 先清理所有现有定时器
+        if (globalCooldownTimer) {
+            clearTimeout(globalCooldownTimer);
+            globalCooldownTimer = null;
+        }
+
+        if (isInCooldown()) {
+            const remaining = getRemainingCooldown();
+            console.log('色花堂发送器: 检测到进行中的冷却期，剩余时间:', Math.ceil(remaining / 1000), '秒');
+
+            // 更新按钮状态
+            updateAllButtonsState();
+
+            // 设置定时器在剩余时间结束时清理
+            globalCooldownTimer = setTimeout(() => {
+                endCooldown();
+            }, remaining);
+        } else {
+            console.log('色花堂发送器: 当前不在冷却期间');
+            // 确保按钮状态正确
+            updateAllButtonsState();
+        }
+    }
+
     // 页面加载完成后开始检测
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', startDetection);
-    } else {
+    function initializeScript() {
+        setupCrossPageSync();
+        initializeCooldownState();
         startDetection();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeScript);
+    } else {
+        initializeScript();
     }
 
     // 监听动态内容变化
@@ -774,11 +994,26 @@
             const testID = 'TEST-001';
             sendToSehuatang(testID);
         });
+
+        GM_registerMenuCommand('测试冷却功能', function() {
+            if (isInCooldown()) {
+                const remaining = Math.ceil(getRemainingCooldown() / 1000);
+                alert(`当前正在冷却中，剩余时间: ${remaining} 秒`);
+            } else {
+                startCooldown();
+                alert('已启动30秒冷却期，可以在其他页面测试同步效果');
+            }
+        });
+
+        GM_registerMenuCommand('强制结束冷却', function() {
+            endCooldown();
+            alert('冷却期已强制结束');
+        });
     }
 
     // 页面加载时清理过期数据
     cleanupExpiredData();
 
-    console.log('色花堂番号发送器已加载 - v1.0.0');
+    console.log('色花堂番号发送器已加载 - v1.2.0 (支持30秒全局冷却)');
 
 })();

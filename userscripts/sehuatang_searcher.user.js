@@ -154,7 +154,6 @@
                 // 页面加载配置
                 page: {
                     loadTimeout: 3000,
-                    ageVerificationDelay: 1000,
                     searchDelay: 2000
                 },
                 // 调试配置
@@ -171,8 +170,6 @@
             };
 
             this.selectors = {
-                // 年龄验证
-                ageVerification: 'a.enter-btn',
                 // 搜索相关
                 searchInputs: [
                     '#search-input',
@@ -500,7 +497,7 @@
                 isForumPage: currentUrl.includes('forum.php')
             });
 
-            // 优先检测内容页面（最重要的检测）
+            // 然后检测内容页面
             if (this.isContentPage()) {
                 this.logger.info('检测到内容页面');
                 return PageType.CONTENT;
@@ -520,6 +517,8 @@
             this.logger.info('检测到其他页面类型');
             return PageType.OTHER;
         }
+
+
 
         isSearchHomePage() {
             const url = window.location.href;
@@ -1870,34 +1869,7 @@
         }
     }
 
-    /**
-     * 年龄验证处理器
-     * 负责处理网站的年龄验证
-     */
-    class AgeVerificationHandler {
-        constructor(config, logger) {
-            this.config = config;
-            this.logger = logger;
-        }
 
-        async handleAgeVerification() {
-            this.logger.debug('检查年龄验证');
-
-            const enterButton = DOMUtils.querySelector(this.config.selectors.ageVerification);
-            if (enterButton) {
-                this.logger.info('发现年龄验证按钮，准备点击');
-
-                // 添加延迟确保页面完全加载
-                await DOMUtils.delay(this.config.get('page.ageVerificationDelay'));
-
-                enterButton.click();
-                this.logger.info('已点击年龄验证按钮');
-
-                // 等待页面跳转
-                await DOMUtils.delay(this.config.get('page.loadTimeout'));
-            }
-        }
-    }
 
     /**
      * 执行状态管理器
@@ -2167,10 +2139,13 @@
 
             // 初始化各个处理器
             this.pageDetector = new PageDetector(this.config, this.logger);
-            this.ageVerificationHandler = new AgeVerificationHandler(this.config, this.logger);
             this.searchHandler = new SearchHandler(this.config, this.logger);
             this.resultFilter = new ResultFilter(this.config, this.logger);
             this.magnetExtractor = new MagnetExtractor(this.config, this.logger, this.stateManager);
+
+            // 设置日志级别
+            const logLevel = this.config.get('debug.logLevel');
+            this.logger.setLevel(logLevel);
 
             this.logger.info('SeHuaTang Searcher Pro 初始化完成');
 
@@ -2332,9 +2307,6 @@
 
                 this.stateManager.startExecution('start');
 
-                // 处理年龄验证
-                await this.ageVerificationHandler.handleAgeVerification();
-
                 // 等待页面稳定
                 await DOMUtils.delay(this.config.get('page.loadTimeout'));
 
@@ -2370,6 +2342,8 @@
                     break;
             }
         }
+
+
 
         async _handleSearchHomePage() {
             this.logger.info('处理搜索主页');

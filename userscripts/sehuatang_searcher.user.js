@@ -4,7 +4,7 @@
 // @version      2.3
 // @description  高级自动化SeHuaTang论坛搜索器 - 智能冷却期管理，Apple风格弹窗，成功后自动关闭页面
 // @author       Advanced Developer
-// @match        https://www.sehuatang.org/*
+// @match        https://www.sehuatang.org/forum.php*
 // @match        https://www.sehuatang.org/search.php*
 // @grant        GM_getValue
 // @grant        GM_deleteValue

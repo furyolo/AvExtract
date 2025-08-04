@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         色花堂番号发送器
 // @namespace    https://github.com/qxinGitHub/searchAV
-// @version      1.2.0
-// @description  检测网页上的番号并提供发送到色花堂搜索的功能，支持自动传递和一键搜索，新增30秒全局冷却功能
+// @version      1.3.5
+// @description  检测网页上的番号并提供发送到色花堂搜索的功能，支持自动传递和一键搜索，新增30秒全局冷却功能，支持自动下载封面图片到本地
 // @author       色花堂
 // @icon         data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABLdJREFUWEftmG2IVGUUx3//O6MZapIftJTeKAqDiqiPGllZSdqHXsw3KmNnpm1LzYqgAleoMAJLw2xmdtsKqS3BkIy0QDSS6FNIkAgRilhUkPjGprtzTzx3d2fv3L0z986upB+6X+855/6e5znnf55zZWYTOY8fOUBJJ85HxoDtf8BRHM2odtAM0cF0fC6oMnicpoUjEjYKrqpr04DWxTjOsNQ8Chg3AWNiQHoR++RTZCybtYx/RgqbGtA6mej3sVziRaCZqj9h0O79xga109csaCpAK3KDiW7g+mY/ELL/WcZCFfipmRiJgFZinsFHwMXNBK5je1SwSHl2po3VENBKzDWjG3FRQkCXY8chsBvX0NY4LrFQeb5KA1kX0Dq5zip8DVweE8gHDkis5Qxb1cbJQRvbyASyLDHxPHBNLIRxQD53qpUjSZCxgE4+/BKfSDwSE+CU4FlydDSSEmsn61/KCok1wPhoHIP3vRwtSXIUD1jkbhNbYwIPy6FgMWWeE8wyY3emwFthGHuP+SY2x6TJUXnMVwt7G+3iMED3QSuzBXgw4tgjn6V6MgAfEtIOJpvPLgg0cZ887lALf9fYlGkzC8BrNNOgnMmTbw6wzFVuJ6K5V+9ILA1g/ZQ5pF5mqY3D9SCH72CRxSY+BLJD28RxwX0q8N2wXEoB6HysyEyDLyNHfXpAdj5PDVgp8aYIKjD8/KBe7gpXa7Vq0wLW2g2t3ViTKdCeGtAv8xnGwzU5BB9k8iwLLgdF5iGuGHzve1won2cQl2EcNo93PJ+e0O4fosB2V61+iS+AeTWxjY2ZAk+nByyxA7gnArg+k2elFbnaFFTd1CT9Cr2vFk6lxNuCFRHfnV6ee88OYH8BuTycdhYBt3t55qcGrJToEjxe4yC2eDkWBMnewWQqNX15UqBzMAPYL2MpcKzqn+HooOz4DU4nPWCRdonVEYdYfRsETtLBwG4jl9gY9gDXhmML2pTn3dSAFt9FegQLlGf7iGWmzKNmdNbIF5yS8YAKQc+PfYbr4CamWCYQandk4We3xjA3ejtOJdT9EuMgbonE3K8Kt6uVP1MDOsNKkdckXoo4+WZs8PKsCjf4GkDjR8FsFYZycODisU5iOeBFJOb1TIGXGxVc/GWhzAwzvgGmR5x7DVZ7OdbWQJaZis8EQgUR5F1/i3tV4oWY2eWgKsxWKwebBgx2scQawSvRVQPuLrhNWQp6gr/qHs0mplsmyLk5MTH6XLdSnvVJclX/wtrFOOvlU+D+OkF6gV2CbjJ8Tx99ZMnSxywTi4GZdSa+wXB7VGFBo/zrP4UGfxbMFYzHDsTNSSsd4ftEyOShqZNp5rMN49YRQiS5NYRMBAy22c3EleCWk4vJpyQA994NVa4YnEjXVPKAc13IVICDBFbmRrMgsW9LCeoK6lsZrfzOL/401rnO0QxkU4BV0E1M8bM8Jp9FiCuBSQMfdUDHMA66mcar0BWe3IJBqknIEQGmOdP6nSHQxljhjjvu/xwwJOB1IcPD1DkBTAG5VyeZo1X0nDPARpAmPs7kWJIo1KPJtbS+A/36DYmVQedxF44KD+kpfj0vAKvK4P7pjGW8cvxRe+MZaHVpV3wu7P4FjSUI5qMsu14AAAAASUVORK5CYII=
 // @license      MIT
@@ -13,6 +13,9 @@
 // @grant        GM_setValue
 // @grant        GM_deleteValue
 // @grant        GM_openInTab
+// @grant        GM_download
+// @grant        GM_xmlhttpRequest
+// @connect      *
 // @run-at       document-idle
 // ==/UserScript==
 
@@ -28,14 +31,8 @@
     // 一般发行番号
     var oRegExp = /(?<!\w|\/|www\.|=|col-|\d-|>|Jukujo-)(?!heyzo|SHINKI|JPNXXX|carib|vps)[a-zA-Z]{2,6}-\d{2,5}(?:-c|_c|-4k)?(?!\d|[A-Za-z]{2,}|-\d|\.com|\.\d)|(?<!\w|\/|\\|\.|【|-|#|@|=|www\.)(?!heyzo|SHINKI|JPNXXX|carib|and|vps|dvd)[a-zA-Z]{2,6}\s{0,2}\d{3,4}(?:-c|_c)?(?!\w|-|\.|\/|×|％|%|@|\s?天| 于| 发表| 發表|歳| 歲|小时|分|系列| Min| day|ml| time|cm| ppi|\.com)|(?<!\w)(?:PARATHD|3DSVR|STARSBD)[-\s]?\d{3,4}(?!\w)|(?<!\w)(?:HIMEMIX|CASMANI|MGSSLND)[-\s]?\d{3}(?!\w)|(?<!\w)(?:k|n)[01]\d{3}(?!\w|-)|(?<!\w|\d-|\/)[01]\d{5}[-_](?:1)?\d{2,3}(?!\w|-\d)|(?<!\w)(?:carib|1pondo)[-_]\d{6}[-_]\d{2,3}(?!\w)|(?<!\w|\d-)\d{6}[-_]\d{2,3}(?:-1pon|-carib|-paco)(?!\w)|(?<!\w|\d-)\d{6}_(?:1)?\d{3}_0[12](?!\w|-\d)|HEYZO[_-\s]?(?:hd_)?\d{4}/gi;
     
-    // 省略字母, 连续数字的番号
-    var oRegExp2 = /(?<=(?<!\w|\d-)([a-zA-Z]{2,6})(?:[\s,，、-]?(?!2022|2021|2020|2019)\d{3,4})+(?!\d)[\s,、，和跟]{0,2})\d{3,4}(?!\w|％|%|人|年|歳|万|の|発)/gmi;
-    
     // 一些素人、无码番号
     var oRegExp_wuma = /(?<!\w|-|\/)\d{3}[a-zA-Z]{2,5}[-\s]?\d{3,4}(?!\w|-|.torrent|年)|(?<!\w|\/)FC2[^\d]{0,5}\d{6,7}|HEYDOUGA[_-\s]?\d{4}-\d{3,5}|(?<!\w)T28-\d{3}|(?<!\w)T-2\d{4,5}(?!\w|-)|(?<!\w|-|\/)[01]\d{5}-[a-zA-Z]{2,7}(?!\w|-)|(?<!\w)MK(?:B)?D-S\d{2,3}(?!\w|-)|(?:SHINKI|KITAIKE)[-\s]?\d{3}(?!\w|-)|JPNXXX[-\s]?\d{5}(?!\w|-)|xxx-av[-\s]\d{4,5}(?!\w|-)|(?<!\w)crazyasia\d{5}(?!\w|-)|(?<!\w)PEWORLD\d{5}(?!\w|-)|(?<!\w)[01]\d{5}[-_]?_01(?=-10mu)?|Jukujo-Club-\d{3}/gi;
-    
-    // 省略写的fc2番号
-    var oRegExp_wuma2 = /(?<=(FC2[^\d]{0,5})(?:[\s,、-]?\d{6,7})+[\s,、]?)\d{6,7}/gmi;
     
     // 排除规则
     var oRegExp_Exclude_ID = /^(?:fx-?([^0]\d{2}|\d{4})|[a-zA-Z]+-?0{2,6}$|pg-13|crc-32|ea211|fs[\s-]?140|trc-20|erc-20|rs[\s-]?(232|422|485)|(sg|ae|kr|tw|ph|vn|kh|ru|uk|ua|tr|th|fr|in|de|sr)[\s-]\d{2}|(gm|ga)-\d{4}|cd[\s-]?\d{2,4}|seed[\s-]?\d{3}$|pc005|moc-\d{5}|wd-40|rtd[\s-]?\d{4}|cm\d{4}|rk\d{4})|^ns[\s-]?\d{3,4}$/i;
@@ -428,8 +425,163 @@
         return button;
     }
 
-    // 发送番号到色花堂
-    function sendToSehuatang(avID, button = null) {
+    // 下载页面封面图片
+    async function downloadCoverImage(avID) {
+        try {
+            // 查找页面中的封面图片
+            const coverImage = document.querySelector('.bigImage img, .screencap img, img[src*="/pics/cover/"]');
+            if (!coverImage) {
+                throw new Error('未找到封面图片');
+            }
+
+            let imageUrl = coverImage.src;
+
+            // 如果是相对路径，转换为绝对路径
+            if (imageUrl.startsWith('/')) {
+                imageUrl = window.location.origin + imageUrl;
+            }
+
+            // 先使用HEAD请求获取文件信息
+            GM_xmlhttpRequest({
+                method: 'HEAD',
+                url: imageUrl,
+                onload: function(response) {
+                    try {
+                        // 从响应头获取正确的文件类型
+                        let extension = 'jpg'; // 默认扩展名
+
+                        // 尝试从Content-Type获取扩展名
+                        const contentType = response.responseHeaders.match(/content-type:\s*image\/(\w+)/i);
+                        if (contentType && contentType[1]) {
+                            extension = contentType[1].toLowerCase();
+                            // 处理特殊情况
+                            if (extension === 'jpeg') extension = 'jpg';
+                        } else {
+                            // 从URL获取扩展名作为备选
+                            const urlMatch = imageUrl.match(/\.(\w+)(?:\?|$)/);
+                            if (urlMatch && urlMatch[1]) {
+                                extension = urlMatch[1].toLowerCase();
+                                if (extension === 'jpeg') extension = 'jpg';
+                            }
+                        }
+
+                        const fileName = `${avID}.${extension}`;
+
+                        // 使用GM_xmlhttpRequest下载图片数据
+                        GM_xmlhttpRequest({
+                            method: 'GET',
+                            url: imageUrl,
+                            responseType: 'blob',
+                            headers: {
+                                'User-Agent': navigator.userAgent,
+                                'Referer': window.location.href
+                            },
+                            onload: function(response) {
+                                try {
+                                    // 创建blob URL
+                                    const blob = response.response;
+                                    const blobUrl = URL.createObjectURL(blob);
+
+                                    // 创建隐藏的下载链接
+                                    const downloadLink = document.createElement('a');
+                                    downloadLink.href = blobUrl;
+                                    downloadLink.download = fileName;
+                                    downloadLink.style.display = 'none';
+
+                                    // 添加到页面并自动点击下载
+                                    document.body.appendChild(downloadLink);
+                                    downloadLink.click();
+
+                                    // 清理资源
+                                    setTimeout(() => {
+                                        document.body.removeChild(downloadLink);
+                                        URL.revokeObjectURL(blobUrl);
+                                    }, 100);
+
+                                    showToast(`封面图片下载完成: ${fileName}`, 'success');
+
+                                } catch (error) {
+                                    console.error('下载处理失败:', error);
+                                    showToast(`下载处理失败: ${error.message}`, 'error');
+                                }
+                            },
+                            onerror: function(error) {
+                                console.error('下载失败:', error);
+                                showToast('下载图片失败，请检查网络连接', 'error');
+                            }
+                        });
+
+                        showToast(`开始下载封面图片: ${fileName}`, 'info');
+
+                    } catch (error) {
+                        console.error('处理HEAD响应失败:', error);
+                        showToast(`处理下载失败: ${error.message}`, 'error');
+                    }
+                },
+                onerror: function(error) {
+                    console.error('获取图片信息失败:', error);
+                    // 如果HEAD请求失败，直接尝试下载
+                    const urlMatch = imageUrl.match(/\.(\w+)(?:\?|$)/);
+                    let extension = 'jpg';
+                    if (urlMatch && urlMatch[1]) {
+                        extension = urlMatch[1].toLowerCase();
+                        if (extension === 'jpeg') extension = 'jpg';
+                    }
+
+                    const fileName = `${avID}.${extension}`;
+
+                    // 直接使用blob下载
+                    GM_xmlhttpRequest({
+                        method: 'GET',
+                        url: imageUrl,
+                        responseType: 'blob',
+                        headers: {
+                            'User-Agent': navigator.userAgent,
+                            'Referer': window.location.href
+                        },
+                        onload: function(response) {
+                            try {
+                                const blob = response.response;
+                                const blobUrl = URL.createObjectURL(blob);
+
+                                const downloadLink = document.createElement('a');
+                                downloadLink.href = blobUrl;
+                                downloadLink.download = fileName;
+                                downloadLink.style.display = 'none';
+
+                                document.body.appendChild(downloadLink);
+                                downloadLink.click();
+
+                                setTimeout(() => {
+                                    document.body.removeChild(downloadLink);
+                                    URL.revokeObjectURL(blobUrl);
+                                }, 100);
+
+                                showToast(`封面图片下载完成: ${fileName}`, 'success');
+
+                            } catch (error) {
+                                console.error('下载处理失败:', error);
+                                showToast(`下载处理失败: ${error.message}`, 'error');
+                            }
+                        },
+                        onerror: function(error) {
+                            console.error('下载失败:', error);
+                            showToast('下载失败，请检查网络连接和权限设置', 'error');
+                        }
+                    });
+
+                    showToast(`开始下载封面图片: ${fileName}`, 'info');
+                }
+            });
+
+        } catch (error) {
+            console.error('下载封面图片失败:', error);
+            showToast(`下载图片失败: ${error.message}`, 'error');
+        }
+    }
+
+    // 发送番号到色花堂并下载图片
+    async function sendToSehuatang(avID, button = null) {
         try {
             // 数据验证
             if (!avID || typeof avID !== 'string' || avID.trim().length === 0) {
@@ -444,15 +596,12 @@
                 throw new Error('浏览器不支持localStorage');
             }
 
-            // 存储数据到localStorage
-            const dataToStore = {
-                fanghao: cleanedID,
-                timestamp: timestamp,
-                source: window.location.href,
-                userAgent: navigator.userAgent.substring(0, 50) // 截取部分用户代理信息
-            };
 
-            console.log('色花堂发送器: 准备发送番号到色花堂');
+
+            // 异步下载封面图片
+            downloadCoverImage(cleanedID).catch(error => {
+                console.error('异步下载图片失败:', error);
+            });
 
             // 打开色花堂搜索页面，通过URL hash传递数据（不会被重定向清除）
             const encodedData = btoa(JSON.stringify({
@@ -467,7 +616,7 @@
                 button.classList.remove('sending');
                 button.classList.add('success');
                 button.innerHTML = '✅已发送';
-                button.title = `番号 ${cleanedID} 已成功发送到色花堂`;
+                button.title = `番号 ${cleanedID} 已成功发送到色花堂并开始下载图片`;
 
                 // 3秒后恢复按钮状态
                 setTimeout(() => {
@@ -483,14 +632,8 @@
             // 启动冷却期
             startCooldown();
 
-            // 详细日志记录
-            console.log('色花堂发送器: 发送成功', {
-                fanghao: cleanedID,
-                timestamp: new Date(timestamp).toLocaleString(),
-                source: window.location.href,
-                dataSize: JSON.stringify(dataToStore).length,
-                userAgent: navigator.userAgent.substring(0, 50)
-            });
+            // 记录发送成功
+            console.log('色花堂发送器: 发送成功', cleanedID);
 
             // 设置5分钟后自动清理过期数据
             setTimeout(() => {
@@ -511,14 +654,8 @@
                 }, 3000);
             }
 
-            // 详细错误日志
-            console.error('色花堂发送器: 发送失败', {
-                error: error.message,
-                stack: error.stack,
-                fanghao: avID,
-                timestamp: new Date().toLocaleString(),
-                source: window.location.href
-            });
+            // 记录错误
+            console.error('色花堂发送器: 发送失败', error.message);
 
             // 显示用户友好的错误提示
             let errorMessage = '发送失败';
@@ -558,7 +695,6 @@
                     localStorage.removeItem('sehuatang_search_fanghao');
                     localStorage.removeItem('sehuatang_search_timestamp');
                     localStorage.removeItem('sehuatang_search_data');
-                    console.log('色花堂发送器: 已清理过期数据');
                 }
             }
         } catch (error) {
@@ -619,6 +755,7 @@
         const menuItems = [
             { text: `复制番号: ${avID}`, action: () => copyToClipboard(avID) },
             { text: '发送到色花堂', action: () => sendToSehuatang(avID) },
+            { text: '下载封面图片', action: () => downloadCoverImage(avID) },
             { text: '查看存储状态', action: () => showStorageStatus() },
             { text: '清理存储数据', action: () => clearStorageData() }
         ];
@@ -873,27 +1010,16 @@
         // 监听 localStorage 变化，实现跨页面同步
         window.addEventListener('storage', (e) => {
             if (e.key === COOLDOWN_START_KEY || e.key === COOLDOWN_KEY) {
-                console.log('色花堂发送器: 检测到其他页面的冷却状态变化', {
-                    key: e.key,
-                    oldValue: e.oldValue,
-                    newValue: e.newValue,
-                    url: e.url
-                });
-
                 // 清理当前定时器
                 if (globalCooldownTimer) {
                     clearTimeout(globalCooldownTimer);
                     globalCooldownTimer = null;
-                    console.log('色花堂发送器: 已清理globalCooldownTimer');
                 }
 
                 // 如果冷却数据被删除（newValue为null），立即结束冷却
                 if (e.newValue === null) {
-                    console.log('色花堂发送器: 其他页面结束了冷却，同步结束本页面冷却');
                     updateAllButtonsState();
-                    console.log('色花堂发送器: 跨页面同步结束冷却完成');
                 } else {
-                    console.log('色花堂发送器: 冷却状态发生变化，重新初始化');
                     // 重新初始化状态
                     initializeCooldownState();
                 }
@@ -903,8 +1029,6 @@
 
     // 初始化冷却状态
     function initializeCooldownState() {
-        console.log('色花堂发送器: 初始化冷却状态');
-
         // 先清理所有现有定时器
         if (globalCooldownTimer) {
             clearTimeout(globalCooldownTimer);
@@ -913,17 +1037,13 @@
 
         if (isInCooldown()) {
             const remaining = getRemainingCooldown();
-            console.log('色花堂发送器: 检测到进行中的冷却期，剩余时间:', Math.ceil(remaining / 1000), '秒');
-
             // 更新按钮状态
             updateAllButtonsState();
-
             // 设置定时器在剩余时间结束时清理
             globalCooldownTimer = setTimeout(() => {
                 endCooldown();
             }, remaining);
         } else {
-            console.log('色花堂发送器: 当前不在冷却期间');
             // 确保按钮状态正确
             updateAllButtonsState();
         }
@@ -1009,11 +1129,18 @@
             endCooldown();
             alert('冷却期已强制结束');
         });
+
+        GM_registerMenuCommand('测试下载图片', function() {
+            const testID = 'TEST-001';
+            downloadCoverImage(testID).catch(error => {
+                alert('测试下载失败: ' + error.message);
+            });
+        });
     }
 
     // 页面加载时清理过期数据
     cleanupExpiredData();
 
-    console.log('色花堂番号发送器已加载 - v1.2.0 (支持30秒全局冷却)');
+    console.log('色花堂番号发送器已加载 - v1.3.5 (支持30秒全局冷却 + 自动下载封面图片)');
 
 })();

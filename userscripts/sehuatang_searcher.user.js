@@ -1003,7 +1003,11 @@
 
             // 严格过滤：只查找包含目标关键词的结果
             const filtered = containers.filter(container => {
-                const text = DOMUtils.getTextContent(container);
+                const categoryLink = DOMUtils.querySelector('a.xi1', container);
+                if (!categoryLink) {
+                    return false; // 如果没有分类链接，直接排除
+                }
+                const text = DOMUtils.getTextContent(categoryLink);
                 return filterKeywords.some(keyword => text.includes(keyword));
             });
 

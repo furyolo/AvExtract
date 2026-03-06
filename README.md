@@ -173,7 +173,7 @@ curl "http://localhost:3226/movies/search?code=ABC"
 
 ## 🌸 用户脚本功能详解
 
-### 色花堂番号发送器 v1.3.5
+### 色花堂番号发送器 v1.3.6
 
 #### 核心功能
 - **智能番号检测**: 自动识别网页上的各种番号格式
@@ -285,7 +285,7 @@ AvExtract/
 │   ├── app.ts                     # 应用配置
 │   └── server.ts                  # 服务器启动
 ├── userscripts/                   # 用户脚本系统
-│   ├── sehuatang_sender.user.js   # 番号发送器 v1.3.5
+│   ├── sehuatang_sender.user.js   # 番号发送器 v1.3.6
 │   ├── sehuatang_searcher.user.js # 搜索器 v2.2
 │   ├── README.md                  # 用户脚本详细说明
 │   ├── CHANGELOG.md               # 更新日志
@@ -385,6 +385,11 @@ export PORT=3227
 - 智能状态同步减少资源消耗
 
 ## 🔄 更新日志
+
+### v1.3.6 (2026-03-06)
+- 🔧 修复 JavBus 页面匹配规则
+- ✅ 元数据改为标准 `@match` 写法，覆盖主域名和子域名
+- 🎯 解决 `https://www.javbus.com/NSFS-433` 页面未命中问题
 
 ### v1.3.5 (2025-08-04)
 - 🧹 代码优化和精简
